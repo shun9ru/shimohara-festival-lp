@@ -1,6 +1,6 @@
-# 下原地区の祭り ランディングページ
+# 下原地区の夏祭り ランディングページ
 
-「見る祭りから、一緒につくる祭りへ」をコンセプトにした、下原地区の祭りを紹介するランディングページ（LP）です。
+「見る夏祭りから、一緒につくる夏祭りへ」をコンセプトにした、下原地区の夏祭りを紹介するランディングページ（LP）です。
 
 - React + TypeScript + Vite + Tailwind CSS 製
 - スマートフォンファースト・レスポンシブ対応
@@ -52,7 +52,7 @@ npm run preview
 // 例：src/data/festivalData.ts
 heroImage: {
   src: '/images/festival/hero-main.jpg', // ← ここをファイル名に合わせて変更
-  alt: '下原地区の祭りで山車を囲む子どもたちと大人たち', // 画像の説明（SEO・読み上げ用）
+  alt: '下原地区の夏祭りで山車を囲む子どもたちと大人たち', // 画像の説明（SEO・読み上げ用）
   label: 'メイン画像を配置', // 画像が無いときに表示されるラベル
 },
 ```
@@ -64,11 +64,11 @@ heroImage: {
 | ファイル名 | 表示される場所 |
 | --- | --- |
 | `hero-main.jpg` | ファーストビューの背景（動画が無いとき） |
-| `about-festival.jpg` | 「この祭りについて」の大きな写真 |
-| `schedule-morning.jpg` | 祭りの一日「朝｜みんなで準備」 |
-| `schedule-start.jpg` | 祭りの一日「出発｜山車の巡回スタート」 |
-| `schedule-parade.jpg` | 祭りの一日「巡回中｜地域のみんなと交流」 |
-| `schedule-finish.jpg` | 祭りの一日「終了｜みんなで片付け」 |
+| `about-festival.jpg` | 「この夏祭りについて」の大きな写真 |
+| `schedule-morning.jpg` | 夏祭りの一日「朝｜みんなで準備」 |
+| `schedule-start.jpg` | 夏祭りの一日「出発｜山車の巡回スタート」 |
+| `schedule-parade.jpg` | 夏祭りの一日「巡回中｜地域のみんなと交流」 |
+| `schedule-finish.jpg` | 夏祭りの一日「終了｜みんなで片付け」 |
 | `gallery-01.jpg` 〜 `gallery-06.jpg` | フォトギャラリー |
 | `next-event-poster.jpg` | 「次回の開催情報」に表示するポスター画像（縦長のチラシ推奨） |
 
@@ -77,7 +77,7 @@ heroImage: {
 
 ### イラストが表示される場所（写真がなくても成立する場所）
 
-以下の場所は、写真の代わりに**祭りの雰囲気に合わせたオリジナルイラスト**が表示されます。写真を用意しなくてもそのまま公開できます。
+以下の場所は、写真の代わりに**夏祭りの雰囲気に合わせたオリジナルイラスト**が表示されます。写真を用意しなくてもそのまま公開できます。
 
 | 場所 | 内容 |
 | --- | --- |
@@ -94,7 +94,7 @@ heroImage: {
   illustration: 'parentChild', // イラストの指定（写真が無いときに表示）
   image: {                      // ← これを追加すると写真が優先されます
     src: '/images/festival/memory-01.jpg',
-    alt: '祭りを楽しむ親子',
+    alt: '夏祭りを楽しむ親子',
     label: '親子の写真を配置',
   },
 },
@@ -119,11 +119,11 @@ heroImage: {
 | ファイル名 | 表示される場所 |
 | --- | --- |
 | `hero-movie.mp4` | ファーストビューの背景（自動再生・音なし・ループ） |
-| `festival-digest.mp4` | 「動画で見る祭り」のメインダイジェスト |
+| `festival-digest.mp4` | 「動画で見る夏祭り」のメインダイジェスト |
 | `preparation.mp4` | 動画カード「みんなで準備」 |
 | `children-performance.mp4` | 動画カード「子どもたちの演奏」 |
 | `parade.mp4` | 動画カード「山車の巡回」 |
-| `after-smiles.mp4` | 動画カード「祭りを終えたあとの笑顔」 |
+| `after-smiles.mp4` | 動画カード「夏祭りを終えたあとの笑顔」 |
 
 - スマートフォンの通信量に配慮し、背景動画は**短め（15〜30秒程度）・軽め（数MB〜10MB程度）**に圧縮するのがおすすめです。
 - ファーストビュー以外の動画は、画面に近づいてから読み込む遅延読み込みになっています。
@@ -137,13 +137,13 @@ heroImage: {
 
 ### 次回の開催予定
 
-このLPは「どんな祭りか」を紹介することが主目的で、次回の開催予定はその中でお知らせする形になっています。
+このLPは「どんな夏祭りか」を紹介することが主目的で、次回の開催予定はその中でお知らせする形になっています。
 
 ```ts
-// 次回の祭りの開催予定（ファーストビューと「次回の開催情報」に表示）
+// 次回の夏祭りの開催予定（ファーストビューと「次回の開催情報」に表示）
 nextEvent: {
   scheduled: true,               // 開催予定が決まっていれば true
-  name: '神立逆西まつり',        // 次回参加する祭り・イベントの名称
+  name: '神立逆西まつり',        // 次回参加する夏祭り・イベントの名称
   date: '2026年10月3日（土）',  // 開催日
   time: '11:00〜19:00',          // 開催時間
   place: '神立駅前',             // 開催場所
@@ -156,9 +156,9 @@ nextEvent: {
 },
 ```
 
-- **祭りが終わって次回が未定になったら、`scheduled: false` にするだけ**で、日付の表示が消えて `tbaMessage` のお知らせ文に切り替わります（LPは祭りの紹介ページとしてそのまま公開し続けられます）。
+- **夏祭りが終わって次回が未定になったら、`scheduled: false` にするだけ**で、日付の表示が消えて `tbaMessage` のお知らせ文に切り替わります（LPは夏祭りの紹介ページとしてそのまま公開し続けられます）。
 - 次回の日程が決まったら、`date` などを更新して `scheduled: true` に戻してください。
-- `name` はファーストビューの「次回開催」欄に祭り・イベント名として表示されます。
+- `name` はファーストビューの「次回開催」欄に夏祭り・イベント名として表示されます。
 - `poster` は「次回の開催情報」セクションの右側にポスター画像として表示されます。`public/images/festival/next-event-poster.jpg` に画像を置くと表示され、無い間はプレースホルダーが表示されます。
 
 「次回の開催情報」セクションの詳細（開催日・出店・主催・問い合わせ先など）は、同じファイルの `information.items` を編集してください。
@@ -190,8 +190,8 @@ links: {
 ### 文章・FAQ・参加者の声など
 
 - キャッチコピー：`catchphrase` / `subCopy`
-- この祭りについて：`about`
-- 祭りの一日：`timeline.steps`
+- この夏祭りについて：`about`
+- 夏祭りの一日：`timeline.steps`
 - 子ども・大人の役割：`roles`
 - 思い出カード：`memories`
 - 参加者の声：`testimonials.items`（コメントと属性タグを配列で管理）
@@ -209,14 +209,14 @@ links: {
 
 ```ts
 sections: {
-  about: true,        // この祭りについて
-  video: true,        // 動画で見る祭り
-  timeline: true,     // 祭りの一日
+  about: true,        // この夏祭りについて
+  video: true,        // 動画で見る夏祭り
+  timeline: true,     // 夏祭りの一日
   roles: true,        // 子どもも大人も、みんなが主役
   memories: true,     // 参加すると、こんな思い出ができます
   gallery: true,      // フォトギャラリー
   testimonials: false, // ← false にすると「参加者の声」が非表示になる
-  future: true,       // 祭りを未来へつなぐために
+  future: true,       // 夏祭りを未来へつなぐために
   faq: true,          // 初めて参加する方へ（FAQ）
   participation: true, // 参加方法
   information: true,  // 開催情報
@@ -292,14 +292,14 @@ LP_aisaikai/
 │   │   ├── Header.tsx           # ヘッダー（PCナビ）
 │   │   ├── MobileMenu.tsx       # スマホ用メニュー
 │   │   ├── HeroSection.tsx      # ファーストビュー
-│   │   ├── AboutSection.tsx     # この祭りについて
-│   │   ├── VideoSection.tsx     # 動画で見る祭り
-│   │   ├── FestivalTimeline.tsx # 祭りの一日
+│   │   ├── AboutSection.tsx     # この夏祭りについて
+│   │   ├── VideoSection.tsx     # 動画で見る夏祭り
+│   │   ├── FestivalTimeline.tsx # 夏祭りの一日
 │   │   ├── RoleSection.tsx      # 子どもと大人の役割
 │   │   ├── MemorySection.tsx    # 参加してできる思い出
 │   │   ├── PhotoGallery.tsx     # フォトギャラリー
 │   │   ├── TestimonialSection.tsx # 参加者の声
-│   │   ├── FutureSection.tsx    # 祭りを未来へつなぐために
+│   │   ├── FutureSection.tsx    # 夏祭りを未来へつなぐために
 │   │   ├── FAQSection.tsx       # よくある質問
 │   │   ├── ParticipationSection.tsx # 参加方法
 │   │   ├── EventInformation.tsx # 開催情報・地図

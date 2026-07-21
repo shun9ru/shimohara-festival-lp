@@ -1,7 +1,7 @@
 import type { MemoryIllustrationKey } from '../data/festivalData'
 
 // =====================================================================
-// 祭りのカラーパレットに合わせたオリジナルSVGイラスト集
+// 夏祭りのカラーパレットに合わせたオリジナルSVGイラスト集
 // ・思い出カード用イラスト（memoryIllustrations）
 // ・ファーストビュー背景の夜祭りイラスト（HeroFestivalIllustration）
 // ・参加者の声のアバター（avatarIllustrations）

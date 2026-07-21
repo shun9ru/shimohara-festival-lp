@@ -24,7 +24,7 @@ export function Footer() {
     <footer id="footer" className="bg-accent-dark py-12 text-sm text-white/75">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-10 md:grid-cols-3">
-          {/* 地区・祭り名 */}
+          {/* 地区・夏祭り名 */}
           <div>
             <p className="flex items-center gap-2.5">
               <span
@@ -36,13 +36,13 @@ export function Footer() {
               <span className="text-base font-bold text-white">{festivalName}</span>
             </p>
             <p className="mt-4 leading-relaxed text-white/60">
-              下原地区｜子どもも大人も、地域のみんなでつくる祭りです。
+              下原地区｜子どもも大人も、地域のみんなでつくる夏祭りです。
             </p>
           </div>
 
-          {/* 祭り運営・問い合わせ先 */}
+          {/* 夏祭り運営・問い合わせ先 */}
           <div>
-            <h2 className="font-bold text-white">祭り運営</h2>
+            <h2 className="font-bold text-white">夏祭り運営</h2>
             <ul className="mt-4 space-y-2.5">
               <li>{contact.organization}</li>
               <li>電話：{contact.tel || '準備中'}</li>

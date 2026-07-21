@@ -13,7 +13,7 @@ function prefersReducedMotion() {
 
 /**
  * ファーストビューの背景。
- * 動画 → 画像 → 祭りらしいグラデーション の順にフォールバックする。
+ * 動画 → 画像 → 夏祭りらしいグラデーション の順にフォールバックする。
  * prefers-reduced-motion 設定時は動画を自動再生せず画像を表示する。
  */
 function HeroBackground() {
@@ -117,7 +117,7 @@ export function HeroSection() {
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <CTAButton href="#video" variant="primary" size="lg" className="w-full sm:w-auto">
-            祭りを見てみる
+            夏祭りを見てみる
           </CTAButton>
           <CTAButton href="#join" variant="white" size="lg" className="w-full sm:w-auto">
             参加方法を見る

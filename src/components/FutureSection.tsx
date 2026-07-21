@@ -4,7 +4,7 @@ import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
 /**
- * 「祭りを未来へつなぐために」。
+ * 「夏祭りを未来へつなぐために」。
  * 他セクションと印象を変えるため、紺色の背景で表示する。
  */
 export function FutureSection() {

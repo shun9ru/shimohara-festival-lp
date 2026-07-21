@@ -4,8 +4,8 @@ import { festivalData } from '../data/festivalData'
 import { MobileMenu } from './MobileMenu'
 
 const NAV_ITEMS = [
-  { label: '祭りについて', href: '#about' },
-  { label: '祭りの一日', href: '#timeline' },
+  { label: '夏祭りについて', href: '#about' },
+  { label: '夏祭りの一日', href: '#timeline' },
   { label: '参加方法', href: '#join' },
   { label: 'よくある質問', href: '#faq' },
 ]

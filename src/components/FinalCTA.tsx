@@ -32,7 +32,7 @@ export function FinalCTA() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <CTAButton href={links.applicationForm} variant="white" size="lg" className="w-full sm:w-auto">
               <FileText className="size-5" aria-hidden="true" />
-              祭りに参加してみる
+              夏祭りに参加してみる
             </CTAButton>
             <CTAButton href="#join" variant="outline-white" size="lg" className="w-full sm:w-auto">
               参加方法を見る

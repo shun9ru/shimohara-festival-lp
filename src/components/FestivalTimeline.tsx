@@ -4,7 +4,7 @@ import { SectionHeading } from './SectionHeading'
 import { SmartImage } from './SmartImage'
 
 /**
- * 祭りの一日（タイムライン）。
+ * 夏祭りの一日（タイムライン）。
  * PCでは中央線をはさんで左右交互、スマホでは左の線に沿って縦一列に表示する。
  */
 export function FestivalTimeline() {
