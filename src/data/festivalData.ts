@@ -67,7 +67,15 @@ export interface ScheduleStep {
   time: string
   title: string
   description: string
-  image: MediaImage
+  /**
+   * この時間帯の写真。複数枚を並べると、横スクロール（スワイプ）で
+   * 見られるようになります。1枚だけの場合は通常の画像として表示されます。
+   * 例: images: [
+   *       { src: '/images/festival/schedule-morning.jpg', alt: '...', label: '...' },
+   *       { src: '/images/festival/schedule-morning-2.jpg', alt: '...', label: '...' },
+   *     ]
+   */
+  images: MediaImage[]
 }
 
 export interface RoleCard {
@@ -273,44 +281,67 @@ export const festivalData = {
         title: 'みんなで準備',
         description:
           '山車の飾り付けや、笛・太鼓、道具の確認を行います。\n初めての方も、周りの人と一緒に準備できます。',
-        image: {
-          src: '/images/festival/schedule-morning.jpg',
-          alt: '朝、山車の飾り付けをする地域の人たち',
-          label: '当日の準備風景を配置',
-        },
+        // 写真を追加したいときは、この配列に { src, alt, label } を並べてください。
+        // 複数並べると、横スクロール（スワイプ）で見られるようになります。
+        images: [
+          {
+            src: '/images/festival/schedule-morning.jpg',
+            alt: '朝、山車の飾り付けをする地域の人たち',
+            label: '当日の準備風景を配置',
+          },
+        ],
+      },
+      {
+        time: '祈願',
+        title: '安全祈願',
+        description:
+          '出発の前に、夏祭りの無事と地域の安全を願って、みんなで祈願を行います。\n一年の感謝を込めて、静かに手を合わせるひとときです。',
+        images: [
+          {
+            src: '/images/festival/schedule-prayer.jpg',
+            alt: '出発前に安全祈願をする参加者たち',
+            label: '安全祈願の写真を配置',
+          },
+        ],
       },
       {
         time: '出発',
         title: '山車の巡回スタート',
         description:
           '子どもたちが笛や太鼓を演奏し、地域のみんなで山車と一緒に歩きます。',
-        image: {
-          src: '/images/festival/schedule-start.jpg',
-          alt: '笛や太鼓を演奏しながら出発する山車と子どもたち',
-          label: '子どもたちの演奏写真を配置',
-        },
+        images: [
+          {
+            src: '/images/festival/schedule-start.jpg',
+            alt: '笛や太鼓を演奏しながら出発する山車と子どもたち',
+            label: '子どもたちの演奏写真を配置',
+          },
+        ],
       },
       {
         time: '巡回中',
         title: '地域のみんなと交流',
         description:
           '途中で休憩を取りながら、地域の人たちとの交流を楽しみます。',
-        image: {
-          src: '/images/festival/schedule-parade.jpg',
-          alt: '休憩しながら地域の人たちと交流する参加者',
-          label: '山車の巡回写真を配置',
-        },
+        images: [
+          {
+            src: '/images/festival/schedule-parade.jpg',
+            alt: '休憩しながら地域の人たちと交流する参加者',
+            label: '山車の巡回写真を配置',
+          },
+        ],
       },
       {
         time: '終了',
         title: 'みんなで片付け',
         description:
           '最後はみんなで協力して片付けます。\n一日を終えたあとの達成感も、夏祭りの大切な思い出です。',
-        image: {
-          src: '/images/festival/schedule-finish.jpg',
-          alt: '夏祭りを終えて笑顔で集まる参加者たち',
-          label: '参加者の集合写真を配置',
-        },
+        images: [
+          {
+            src: '/images/festival/schedule-finish.jpg',
+            alt: '夏祭りを終えて笑顔で集まる参加者たち',
+            label: '参加者の集合写真を配置',
+          },
+        ],
       },
     ] satisfies ScheduleStep[],
   },

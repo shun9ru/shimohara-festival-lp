@@ -1,7 +1,7 @@
 import { festivalData } from '../data/festivalData'
+import { ImageCarousel } from './ImageCarousel'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
-import { SmartImage } from './SmartImage'
 
 /**
  * 夏祭りの一日（タイムライン）。
@@ -54,9 +54,7 @@ export function FestivalTimeline() {
                   delay={100}
                   className={`mt-4 pl-12 md:mt-0 md:pl-0 ${even ? 'md:order-2 md:pl-14' : 'md:order-1 md:pr-14'}`}
                 >
-                  <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-md">
-                    <SmartImage image={step.image} />
-                  </div>
+                  <ImageCarousel images={step.images} />
                 </Reveal>
               </li>
             )
