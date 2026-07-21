@@ -1,9 +1,9 @@
 import { CalendarDays, ExternalLink } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { iconMap } from './icons'
-import { MediaPlaceholder } from './MediaPlaceholder'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
+import { SmartImage } from './SmartImage'
 
 export function EventInformation() {
   const { information, links, nextEvent } = festivalData
@@ -53,10 +53,14 @@ export function EventInformation() {
             )}
           </Reveal>
 
-          {/* 地図 */}
+          {/* 次回開催のポスター＋地図 */}
           <Reveal delay={120}>
-            <div className="ring-ink/5 aspect-[4/3] overflow-hidden rounded-3xl shadow-sm ring-1">
-              {links.googleMapEmbed ? (
+            <div className="ring-ink/5 aspect-[3/4] overflow-hidden rounded-3xl bg-white shadow-sm ring-1">
+              <SmartImage image={nextEvent.poster} fit="contain" />
+            </div>
+
+            {links.googleMapEmbed && (
+              <div className="ring-ink/5 mt-6 aspect-[4/3] overflow-hidden rounded-3xl shadow-sm ring-1">
                 <iframe
                   src={links.googleMapEmbed}
                   title="会場周辺の地図（Googleマップ）"
@@ -65,14 +69,8 @@ export function EventInformation() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className="h-full w-full border-0"
                 />
-              ) : (
-                <MediaPlaceholder
-                  type="map"
-                  label="Googleマップを配置"
-                  note="festivalData.ts の links.googleMapEmbed に埋め込み用URLを設定してください"
-                />
-              )}
-            </div>
+              </div>
+            )}
             {links.googleMapLink && (
               <a
                 href={links.googleMapLink}

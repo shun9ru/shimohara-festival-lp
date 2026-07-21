@@ -52,6 +52,7 @@ export type IconKey =
   | 'share'
   | 'shirt'
   | 'smile'
+  | 'store'
   | 'users'
   | 'wallet'
 
@@ -139,11 +140,23 @@ export const festivalData = {
      * false にすると日付は表示されず、tbaMessage の文言が表示されます。
      */
     scheduled: true,
-    date: '2026年10月18日（日）',
-    time: '9:00〜15:00',
-    place: '下原公民館前 広場',
+    /** 次回参加する祭り・イベントの名称（ファーストビューに表示されます） */
+    name: '神立逆西まつり',
+    date: '2026年10月3日（土）',
+    time: '11:00〜19:00',
+    place: '神立駅前',
     /** scheduled が false のときに表示するお知らせ文 */
     tbaMessage: '次回の開催日程は、決まり次第このページでお知らせします。',
+    /**
+     * 次回開催のポスター画像。
+     * public/images/festival/ に画像ファイルを置き、下記 src にパスを設定してください。
+     * 未設定の間はプレースホルダーが表示されます。
+     */
+    poster: {
+      src: '/images/festival/next-event-poster.jpg',
+      alt: '神立逆西まつり 2026年10月3日（土）11時〜19時 神立駅前 開催のポスター',
+      label: '次回開催（神立逆西まつり）のポスターを配置',
+    } satisfies MediaImage,
   },
 
   // ===== セクションの表示・非表示 =====
@@ -564,26 +577,25 @@ export const festivalData = {
   information: {
     title: '次回の開催情報',
     description:
-      '次回の祭りの開催予定です。内容は変更になる場合があります。\n変更の際は、お申込み時にご記入いただいた連絡先などへお知らせします。',
+      '次回は、神立駅前で開催される「神立逆西まつり」に出演します。\n地域みんなでつくるお祭りです。内容は変更になる場合があります。',
     items: [
-      { icon: 'calendar', label: '開催日', value: '2026年10月18日（日）' },
-      { icon: 'clock', label: '開催時間', value: '9:00〜15:00' },
-      { icon: 'mapPin', label: '集合場所', value: '下原公民館前 広場' },
-      { icon: 'route', label: '巡回エリア', value: '下原地区内一円' },
+      { icon: 'drum', label: 'イベント名', value: '神立逆西まつり' },
+      { icon: 'calendar', label: '開催日', value: '2026年10月3日（土）〔令和8年〕' },
+      { icon: 'clock', label: '開催時間', value: '11:00〜19:00' },
+      { icon: 'mapPin', label: '開催地', value: '神立駅前' },
+      { icon: 'store', label: '出店', value: 'キッチンカー他 50店舗以上が出店' },
+      { icon: 'heartHandshake', label: '主催', value: '神立逆西共演実行委員会' },
       {
         icon: 'users',
-        label: '対象',
-        value: '下原地区にお住まいの方（見学はどなたでも歓迎）',
+        label: '後援',
+        value: 'かすみがうら市観光協会／神立商工振興会',
       },
-      { icon: 'wallet', label: '参加費', value: '無料' },
-      { icon: 'backpack', label: '持ち物', value: '飲み物、タオル、帽子など' },
-      { icon: 'shirt', label: '服装', value: '動きやすい服装・歩きやすい靴' },
+      { icon: 'share', label: '最新情報', value: '公式Instagramをご確認ください' },
       {
-        icon: 'rain',
-        label: '雨天時',
-        value: '小雨決行・荒天中止\n（中止・変更は事前にお知らせします）',
+        icon: 'phone',
+        label: 'お問い合わせ',
+        value: '神立代表　入江　090-1409-9938\n逆西代表　今井　080-5053-2813',
       },
-      { icon: 'phone', label: '問い合わせ', value: '下原地区祭り運営委員会' },
     ] satisfies InfoItem[],
   },
 

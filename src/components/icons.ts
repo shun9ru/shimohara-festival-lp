@@ -16,6 +16,7 @@ import {
   Share2,
   Shirt,
   Smile,
+  Store,
   Users,
   Wallet,
 } from 'lucide-react'
@@ -44,6 +45,7 @@ export const iconMap: Record<IconKey, LucideIcon> = {
   share: Share2,
   shirt: Shirt,
   smile: Smile,
+  store: Store,
   users: Users,
   wallet: Wallet,
 }

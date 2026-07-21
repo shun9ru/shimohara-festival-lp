@@ -90,6 +90,9 @@ export function HeroSection() {
             <span className="bg-primary rounded-full px-3.5 py-1 text-[11px] font-bold tracking-widest text-white">
               次回開催
             </span>
+            {'name' in nextEvent && nextEvent.name && (
+              <p className="text-base font-bold tracking-wide md:text-lg">{nextEvent.name}</p>
+            )}
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-sm font-medium">
               <span className="inline-flex items-center gap-1.5">
                 <CalendarDays className="size-4 text-white/80" aria-hidden="true" />
