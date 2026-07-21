@@ -1,4 +1,4 @@
-import { FileText, MessageCircle, Phone } from 'lucide-react'
+import { FileText, Phone } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { CTAButton } from './CTAButton'
 import { Reveal } from './Reveal'
@@ -39,10 +39,6 @@ export function ParticipationSection() {
         {/* ボタン */}
         <Reveal className="mt-12">
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <CTAButton href={links.lineOpenChat} variant="line" size="lg" className="w-full sm:w-auto">
-              <MessageCircle className="size-5" aria-hidden="true" />
-              LINEオープンチャットに参加する
-            </CTAButton>
             <CTAButton href={links.applicationForm} variant="primary" size="lg" className="w-full sm:w-auto">
               <FileText className="size-5" aria-hidden="true" />
               参加申込みフォームを開く

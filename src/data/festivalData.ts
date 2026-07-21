@@ -505,7 +505,7 @@ export const festivalData = {
       {
         question: '雨天時はどうなりますか？',
         answer:
-          '小雨の場合は、内容を変更して実施することがあります。中止・変更の際は、LINEオープンチャットなどで事前にお知らせします。',
+          '小雨の場合は、内容を変更して実施することがあります。中止・変更の際は、お申込み時にご記入いただいた連絡先などへ事前にお知らせします。',
       },
       {
         question: '見学だけでも大丈夫ですか？',
@@ -523,27 +523,28 @@ export const festivalData = {
   // ===== 参加方法 =====
   participation: {
     title: '参加方法',
-    description: '参加までの流れは、かんたん3ステップです。',
+    description:
+      '参加申込みは、Googleフォームに回答するだけ。\nスマートフォンから1〜2分で完了します。',
     steps: [
       {
-        title: 'LINEオープンチャットに参加',
+        title: '参加申込みフォームを開く',
         description:
-          '下原地区の祭りのLINEオープンチャットに参加してください。ニックネームでの参加もできます。',
+          '下の「参加申込みフォームを開く」ボタンから、Googleフォームを開きます。',
       },
       {
-        title: '祭りの案内や募集情報を確認',
+        title: '必要事項を入力して送信',
         description:
-          '祭りの日程や練習、お手伝い募集などの情報をお届けします。まずは見ているだけでもOKです。',
+          'お名前や参加したい内容など、いくつかの質問に答えて送信してください。',
       },
       {
-        title: '参加したい内容や時間を連絡',
+        title: '申込み完了',
         description:
-          '参加してみたい内容や、お手伝いできる時間を気軽にご連絡ください。当日参加のご相談も歓迎です。',
+          'お申込みはこれで完了です。当日の詳しい案内は、ご記入いただいた連絡先へお知らせします。',
       },
     ] satisfies ParticipationStep[],
-    /** LINEを利用しない方向けの案内 */
+    /** フォームでの申込みが難しい方向けの案内 */
     analog: {
-      title: 'LINEを利用されない方へ',
+      title: 'フォームでの申込みが難しい方へ',
       description:
         'お電話や、回覧板・公民館に設置している申込み用紙でもお申込みいただけます。ご不明な点は、下記の問い合わせ先までお気軽にご連絡ください。',
     },
@@ -552,7 +553,8 @@ export const festivalData = {
   // ===== 開催情報 =====
   information: {
     title: '開催情報',
-    description: '当日の詳しい情報です。変更がある場合は、LINEオープンチャットなどでお知らせします。',
+    description:
+      '当日の詳しい情報です。変更がある場合は、お申込み時にご記入いただいた連絡先などへお知らせします。',
     items: [
       { icon: 'calendar', label: '開催日', value: '2026年10月18日（日）' },
       { icon: 'clock', label: '開催時間', value: '9:00〜15:00' },
@@ -569,7 +571,7 @@ export const festivalData = {
       {
         icon: 'rain',
         label: '雨天時',
-        value: '小雨決行・荒天中止\n（中止・変更はLINE等でお知らせします）',
+        value: '小雨決行・荒天中止\n（中止・変更は事前にお知らせします）',
       },
       { icon: 'phone', label: '問い合わせ', value: '下原地区祭り運営委員会' },
     ] satisfies InfoItem[],
@@ -588,7 +590,7 @@ export const festivalData = {
     /** LINEオープンチャットの招待URL */
     lineOpenChat: '',
     /** 参加申込みフォームのURL（Googleフォームなど） */
-    applicationForm: '',
+    applicationForm: 'https://forms.gle/BgMdXwSjWX3xbrCf9',
     /** 問い合わせ先URL（フォームのURL または 'mailto:xxx@example.com'） */
     contact: '',
     /** Googleマップ「埋め込み用」URL（README参照） */

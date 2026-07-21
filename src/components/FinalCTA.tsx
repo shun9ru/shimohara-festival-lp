@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { CTAButton } from './CTAButton'
 import { Reveal } from './Reveal'
@@ -30,12 +30,12 @@ export function FinalCTA() {
 
         <Reveal delay={200}>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <CTAButton href="#join" variant="white" size="lg" className="w-full sm:w-auto">
+            <CTAButton href={links.applicationForm} variant="white" size="lg" className="w-full sm:w-auto">
+              <FileText className="size-5" aria-hidden="true" />
               祭りに参加してみる
             </CTAButton>
-            <CTAButton href={links.lineOpenChat} variant="line" size="lg" className="w-full sm:w-auto">
-              <MessageCircle className="size-5" aria-hidden="true" />
-              まずはLINEで情報を見る
+            <CTAButton href="#join" variant="outline-white" size="lg" className="w-full sm:w-auto">
+              参加方法を見る
             </CTAButton>
             <CTAButton href={links.contact} variant="outline-white" size="lg" className="w-full sm:w-auto">
               見学について問い合わせる

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { MessageCircle } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 
 /**
@@ -35,7 +35,7 @@ export function FixedCTABar() {
     return () => observer.disconnect()
   }, [])
 
-  const lineReady = Boolean(links.lineOpenChat)
+  const formReady = Boolean(links.applicationForm)
 
   return (
     <div
@@ -45,20 +45,20 @@ export function FixedCTABar() {
       }`}
     >
       <div className="flex gap-2">
-        {lineReady ? (
+        {formReady ? (
           <a
-            href={links.lineOpenChat}
+            href={links.applicationForm}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-line flex flex-1 items-center justify-center gap-1.5 rounded-full py-3 text-sm font-bold text-white shadow-sm"
+            className="bg-primary flex flex-1 items-center justify-center gap-1.5 rounded-full py-3 text-sm font-bold text-white shadow-sm"
           >
-            <MessageCircle className="size-4.5" aria-hidden="true" />
-            LINEで情報を見る
+            <FileText className="size-4.5" aria-hidden="true" />
+            参加申込みフォーム
           </a>
         ) : (
-          <span className="bg-line flex flex-1 cursor-default items-center justify-center gap-1.5 rounded-full py-3 text-sm font-bold text-white opacity-75">
-            <MessageCircle className="size-4.5" aria-hidden="true" />
-            LINE
+          <span className="bg-primary flex flex-1 cursor-default items-center justify-center gap-1.5 rounded-full py-3 text-sm font-bold text-white opacity-75">
+            <FileText className="size-4.5" aria-hidden="true" />
+            申込み
             <span className="text-ink-soft rounded-full bg-white px-2 py-0.5 text-[10px] font-bold">
               準備中
             </span>
@@ -66,7 +66,7 @@ export function FixedCTABar() {
         )}
         <a
           href="#join"
-          className="bg-primary flex flex-1 items-center justify-center rounded-full py-3 text-sm font-bold text-white shadow-sm"
+          className="border-primary text-primary flex flex-1 items-center justify-center rounded-full border-2 bg-white py-3 text-sm font-bold"
         >
           参加方法を見る
         </a>
