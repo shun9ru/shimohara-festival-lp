@@ -1,4 +1,4 @@
-import { ExternalLink } from 'lucide-react'
+import { CalendarDays, ExternalLink } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { iconMap } from './icons'
 import { MediaPlaceholder } from './MediaPlaceholder'
@@ -6,7 +6,7 @@ import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
 export function EventInformation() {
-  const { information, links } = festivalData
+  const { information, links, nextEvent } = festivalData
 
   return (
     <section id="info" className="bg-cream scroll-mt-20 py-16 md:py-24">
@@ -20,26 +20,37 @@ export function EventInformation() {
         </Reveal>
 
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:items-start">
-          {/* 開催情報の一覧 */}
+          {/* 開催情報の一覧（次回開催が未定のときはお知らせ文を表示） */}
           <Reveal>
-            <div className="ring-ink/5 rounded-3xl bg-white p-6 shadow-sm ring-1 md:p-8">
-              <dl className="divide-ink/10 divide-y">
-                {information.items.map((item) => {
-                  const Icon = iconMap[item.icon]
-                  return (
-                    <div key={item.label} className="flex gap-4 py-3.5 first:pt-0 last:pb-0">
-                      <dt className="text-ink flex w-28 shrink-0 items-center gap-2 text-sm font-bold">
-                        <Icon className="text-primary size-4 shrink-0" aria-hidden="true" />
-                        {item.label}
-                      </dt>
-                      <dd className="text-ink-soft flex-1 text-sm leading-relaxed whitespace-pre-line">
-                        {item.value}
-                      </dd>
-                    </div>
-                  )
-                })}
-              </dl>
-            </div>
+            {nextEvent.scheduled ? (
+              <div className="ring-ink/5 rounded-3xl bg-white p-6 shadow-sm ring-1 md:p-8">
+                <dl className="divide-ink/10 divide-y">
+                  {information.items.map((item) => {
+                    const Icon = iconMap[item.icon]
+                    return (
+                      <div key={item.label} className="flex gap-4 py-3.5 first:pt-0 last:pb-0">
+                        <dt className="text-ink flex w-28 shrink-0 items-center gap-2 text-sm font-bold">
+                          <Icon className="text-primary size-4 shrink-0" aria-hidden="true" />
+                          {item.label}
+                        </dt>
+                        <dd className="text-ink-soft flex-1 text-sm leading-relaxed whitespace-pre-line">
+                          {item.value}
+                        </dd>
+                      </div>
+                    )
+                  })}
+                </dl>
+              </div>
+            ) : (
+              <div className="ring-ink/5 rounded-3xl bg-white p-8 text-center shadow-sm ring-1 md:p-10">
+                <span className="bg-primary-soft text-primary mx-auto flex size-14 items-center justify-center rounded-full">
+                  <CalendarDays className="size-7" aria-hidden="true" />
+                </span>
+                <p className="text-ink-soft mt-5 leading-relaxed whitespace-pre-line">
+                  {nextEvent.tbaMessage}
+                </p>
+              </div>
+            )}
           </Reveal>
 
           {/* 地図 */}

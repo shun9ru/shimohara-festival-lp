@@ -54,7 +54,7 @@ function HeroBackground() {
 }
 
 export function HeroSection() {
-  const { catchphrase, subCopy, heroBadge, event, media } = festivalData
+  const { catchphrase, subCopy, heroBadge, nextEvent, media } = festivalData
 
   return (
     <section id="hero" className="relative flex min-h-svh items-center justify-center overflow-hidden">
@@ -84,21 +84,33 @@ export function HeroSection() {
           {subCopy}
         </p>
 
-        {/* 開催情報 */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium">
-          <span className="inline-flex items-center gap-1.5">
-            <CalendarDays className="size-4 text-white/80" aria-hidden="true" />
-            {event.date}
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="size-4 text-white/80" aria-hidden="true" />
-            {event.time}
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <MapPin className="size-4 text-white/80" aria-hidden="true" />
-            {event.place}
-          </span>
-        </div>
+        {/* 次回の開催予定（scheduled が false のときはお知らせ文を表示） */}
+        {nextEvent.scheduled ? (
+          <div className="mt-8 inline-flex flex-col items-center gap-2.5 rounded-2xl border border-white/25 bg-white/10 px-6 py-4 backdrop-blur">
+            <span className="bg-primary rounded-full px-3.5 py-1 text-[11px] font-bold tracking-widest text-white">
+              次回開催
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-sm font-medium">
+              <span className="inline-flex items-center gap-1.5">
+                <CalendarDays className="size-4 text-white/80" aria-hidden="true" />
+                {nextEvent.date}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="size-4 text-white/80" aria-hidden="true" />
+                {nextEvent.time}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin className="size-4 text-white/80" aria-hidden="true" />
+                {nextEvent.place}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <p className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm backdrop-blur">
+            <CalendarDays className="size-4 shrink-0 text-white/80" aria-hidden="true" />
+            {nextEvent.tbaMessage}
+          </p>
+        )}
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <CTAButton href="#video" variant="primary" size="lg" className="w-full sm:w-auto">
