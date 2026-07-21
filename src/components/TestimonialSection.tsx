@@ -1,5 +1,6 @@
-import { Quote, UserRound } from 'lucide-react'
+import { Quote } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
+import { avatarIllustrations } from './illustrations'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -18,7 +19,9 @@ export function TestimonialSection() {
         </Reveal>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-14">
-          {testimonials.items.map((item, i) => (
+          {testimonials.items.map((item, i) => {
+            const Avatar = avatarIllustrations[i % avatarIllustrations.length]
+            return (
             <Reveal key={item.comment} delay={(i % 2) * 100} className="h-full">
               <article className="bg-cream ring-ink/5 relative flex h-full flex-col rounded-2xl p-6 shadow-sm ring-1 md:p-7">
                 <Quote
@@ -27,11 +30,8 @@ export function TestimonialSection() {
                 />
                 <p className="text-ink flex-1 pr-8 leading-relaxed">{item.comment}</p>
                 <footer className="mt-5 flex items-center gap-3">
-                  <span
-                    className="bg-primary-soft text-primary flex size-11 shrink-0 items-center justify-center rounded-full"
-                    aria-hidden="true"
-                  >
-                    <UserRound className="size-6" />
+                  <span className="size-11 shrink-0 overflow-hidden rounded-full" aria-hidden="true">
+                    <Avatar className="h-full w-full" />
                   </span>
                   <ul className="flex flex-wrap gap-1.5">
                     {item.tags.map((tag) => (
@@ -46,7 +46,8 @@ export function TestimonialSection() {
                 </footer>
               </article>
             </Reveal>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

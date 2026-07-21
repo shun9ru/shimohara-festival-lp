@@ -1,4 +1,5 @@
 import { festivalData } from '../data/festivalData'
+import { memoryIllustrations } from './illustrations'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 import { SmartImage } from './SmartImage'
@@ -14,11 +15,18 @@ export function MemorySection() {
         </Reveal>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 md:mt-14 lg:grid-cols-3">
-          {memories.cards.map((card, i) => (
+          {memories.cards.map((card, i) => {
+            const Illustration = memoryIllustrations[card.illustration]
+            return (
             <Reveal key={card.title} delay={(i % 3) * 100} className="h-full">
               <article className="bg-cream ring-ink/5 flex h-full flex-col overflow-hidden rounded-2xl shadow-sm ring-1">
                 <div className="aspect-[3/2] overflow-hidden">
-                  <SmartImage image={card.image} />
+                  {/* 写真パスが設定されていれば写真、なければイラストを表示 */}
+                  {card.image?.src ? (
+                    <SmartImage image={card.image} />
+                  ) : (
+                    <Illustration className="h-full w-full" />
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-ink font-bold">{card.title}</h3>
@@ -26,7 +34,8 @@ export function MemorySection() {
                 </div>
               </article>
             </Reveal>
-          ))}
+            )
+          })}
         </div>
 
         {/* セクション中央のメッセージ */}

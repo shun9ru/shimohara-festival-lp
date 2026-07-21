@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { CalendarDays, ChevronDown, Clock, MapPin, Video } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { CTAButton } from './CTAButton'
+import { HeroFestivalIllustration } from './illustrations'
 
 function prefersReducedMotion() {
   return (
@@ -45,7 +46,8 @@ function HeroBackground() {
           onError={() => setImageFailed(true)}
         />
       ) : (
-        <div className="from-primary via-primary-dark to-accent-dark h-full w-full bg-gradient-to-br" />
+        // 動画・画像が未設定の間は、夜祭りのイラストを表示する
+        <HeroFestivalIllustration className="h-full w-full" />
       )}
     </div>
   )

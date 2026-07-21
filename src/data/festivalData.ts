@@ -76,10 +76,22 @@ export interface RoleCard {
   items: string[]
 }
 
+/** 思い出カードのイラスト名（src/components/illustrations.tsx で定義） */
+export type MemoryIllustrationKey =
+  | 'parentChild' // 手をつなぐ親子と提灯
+  | 'taiko' // 太鼓を叩く子ども
+  | 'neighbors' // あいさつを交わすご近所さん
+  | 'talk' // 世代を超えたおしゃべり
+  | 'town' // まちなみとハート
+  | 'nightMemory' // 花火を見上げる親子
+
 export interface MemoryCard {
   title: string
   description: string
-  image: MediaImage
+  /** カードに表示するイラスト */
+  illustration: MemoryIllustrationKey
+  /** image.src に写真のパスを設定すると、イラストの代わりに写真が表示されます */
+  image?: MediaImage
 }
 
 export interface Testimonial {
@@ -324,62 +336,41 @@ export const festivalData = {
     title: '参加すると、こんな思い出ができます',
     description:
       '祭りで過ごす一日は、活動そのものよりも、\nあとから思い返す「思い出」として残っていきます。',
+    // 初期状態ではイラストが表示されます。
+    // 写真に差し替えたい場合は image.src にパスを設定してください。
+    // 例: image: { src: '/images/festival/memory-01.jpg', alt: '祭りを楽しむ親子', label: '親子の写真を配置' },
     cards: [
       {
         title: '親子で共通の思い出ができる',
         description: '同じ一日を一緒に過ごすことで、家族の共通の話題と思い出が生まれます。',
-        image: {
-          src: '/images/festival/memory-01.jpg',
-          alt: '祭りを楽しむ親子',
-          label: '親子の写真を配置',
-        },
+        illustration: 'parentChild',
       },
       {
         title: '子どもの成長を近くで感じられる',
         description: '練習や本番をやりきる姿に、普段は見られない成長を感じられます。',
-        image: {
-          src: '/images/festival/memory-02.jpg',
-          alt: '太鼓に挑戦する子どもを見守る保護者',
-          label: '子どもの挑戦写真を配置',
-        },
+        illustration: 'taiko',
       },
       {
         title: '近所に顔見知りが増える',
         description: 'あいさつできるご近所さんが増えると、毎日の暮らしが少し心強くなります。',
-        image: {
-          src: '/images/festival/memory-03.jpg',
-          alt: '談笑する地域の人たち',
-          label: 'ご近所交流の写真を配置',
-        },
+        illustration: 'neighbors',
       },
       {
         title: '普段話さない人ともつながれる',
         description: '世代を超えて、地域の人と自然に話せるきっかけになります。',
-        image: {
-          src: '/images/festival/memory-04.jpg',
-          alt: '世代を超えて交流する参加者たち',
-          label: '世代交流の写真を配置',
-        },
+        illustration: 'talk',
       },
       {
         title: '自分たちの地域を少し好きになる',
         description: '一緒に祭りをつくった経験が、地域への愛着につながります。',
-        image: {
-          src: '/images/festival/memory-05.jpg',
-          alt: '山車を囲む地域の人たちの笑顔',
-          label: '地域の風景写真を配置',
-        },
+        illustration: 'town',
       },
       {
         title: '子どもたちに地域の思い出を残せる',
         description: 'ふるさとの記憶として、子どもたちの心にずっと残ります。',
-        image: {
-          src: '/images/festival/memory-06.jpg',
-          alt: '夕方の祭りを楽しむ子どもたち',
-          label: '子どもたちの写真を配置',
-        },
+        illustration: 'nightMemory',
       },
-    ] satisfies MemoryCard[],
+    ] satisfies MemoryCard[] as MemoryCard[],
     /** セクション中央に表示する文章 */
     quote:
       '太鼓を叩いたこと。\nみんなで山車と一緒に歩いたこと。\n地域の人たちに声をかけてもらったこと。\nその一日が、子どもたちの大切な思い出になります。',
