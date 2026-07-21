@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d8442e" />
+
+    <!-- SEO -->
+    <title>下原地区の祭り｜子どもも大人も、みんなが主役</title>
+    <meta
+      name="description"
+      content="子どもも大人も、みんなが主役。山車や笛・太鼓を地域のみんなで楽しむ、下原地区の祭りをご紹介します。初参加や見学も大歓迎です。"
+    />
+
+    <!-- 公開URL：プロジェクト直下の .env ファイル（VITE_SITE_URL）で設定します -->
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="下原地区の祭り" />
+    <meta property="og:title" content="下原地区の祭り｜子どもも大人も、みんなが主役" />
+    <meta
+      property="og:description"
+      content="子どもも大人も、みんなが主役。山車や笛・太鼓を地域のみんなで楽しむ、下原地区の祭りをご紹介します。初参加や見学も大歓迎です。"
+    />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:image" content="%VITE_SITE_URL%/images/festival/hero-main.jpg" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="下原地区の祭り｜子どもも大人も、みんなが主役" />
+    <meta
+      name="twitter:description"
+      content="子どもも大人も、みんなが主役。山車や笛・太鼓を地域のみんなで楽しむ、下原地区の祭りをご紹介します。初参加や見学も大歓迎です。"
+    />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/images/festival/hero-main.jpg" />
+
+    <!-- favicon（仮）-->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Webフォント（丸ゴシック）。不要な場合はこの3行を削除してください -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 構造化データ（下地）：日程・場所が確定したら書き換えてください -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "下原地区の祭り",
+        "description": "子どもも大人も、みんなが主役。山車や笛・太鼓を地域のみんなで楽しむ、下原地区の祭りです。",
+        "startDate": "2026-10-18T09:00:00+09:00",
+        "endDate": "2026-10-18T15:00:00+09:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "下原公民館前 広場",
+          "address": { "@type": "PostalAddress", "addressCountry": "JP" }
+        },
+        "image": ["%VITE_SITE_URL%/images/festival/hero-main.jpg"],
+        "organizer": { "@type": "Organization", "name": "下原地区祭り運営委員会" },
+        "isAccessibleForFree": true
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

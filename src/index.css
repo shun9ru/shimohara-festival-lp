@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic Medium", "Yu Gothic", Meiryo, sans-serif;
+
+  /* =========================================================
+     カラーパレット
+     ここを変更すると、サイト全体の色をまとめて変更できます。
+     ========================================================= */
+  --color-primary: #d8442e; /* メインカラー：朱色 */
+  --color-primary-dark: #b23520; /* メイン濃色（ホバーなど） */
+  --color-primary-soft: #fceee9; /* メイン淡色（アイコン背景など） */
+  --color-accent: #24406b; /* アクセントカラー：紺 */
+  --color-accent-dark: #16294a; /* アクセント濃色（フッターなど） */
+  --color-cream: #faf6ec; /* 背景：生成り */
+  --color-beige: #f1e9d7; /* 背景：淡いベージュ */
+  --color-ink: #37332d; /* 文字：濃いグレー */
+  --color-ink-soft: #6f6961; /* 文字：やわらかいグレー */
+  --color-line: #06c755; /* LINEブランドカラー */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-cream text-ink antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* スクロール時にふわっと表示する演出 */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.reveal.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-bounce {
+    animation: none;
+  }
+}
+
+/* 横スクロールUIのスクロールバー非表示 */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
