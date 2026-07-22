@@ -211,6 +211,17 @@ export const festivalData = {
     title: 'この夏祭りについて',
     description:
       '下原地区の夏祭りでは、地域の山車が地区内を巡ります。\n子どもたちは山車に乗って笛や太鼓を演奏し、大人たちは準備や運行、安全確認などを支えます。\n子どもから大人まで、地域のみんなで協力してつくる夏祭りです。',
+    /**
+     * 冒頭に表示するダイジェスト動画。
+     * public/videos/festival/ に動画を置き、src にパスを設定すると動画が表示されます。
+     * src が空文字 '' のときや動画ファイルが無いときは、下の image（写真）が表示されます。
+     */
+    video: {
+      src: '/videos/festival/festival-digest.mp4',
+      title: '下原地区の夏祭り ダイジェスト',
+      label: 'ダイジェスト動画を配置',
+    } satisfies VideoItem,
+    /** 動画が無いときに冒頭に表示する写真（動画のポスターにも使われます） */
     image: {
       src: '/images/festival/about-festival.jpg',
       alt: '地区内を巡る山車と、山車を囲む地域の人たち',

@@ -121,6 +121,7 @@ heroImage: {
 | ファイル名 | 表示される場所 |
 | --- | --- |
 | `hero-movie.mp4` | ファーストビューの背景（自動再生・音なし・ループ） |
+| `festival-digest.mp4` | 「この夏祭りについて」冒頭のダイジェスト動画（未配置の間は `about-festival.jpg` を表示） |
 | `preparation.mp4` | 夏祭りの一日「朝｜みんなで準備」の動画 |
 | `children-performance.mp4` | 夏祭りの一日「出発｜山車の巡回スタート」の動画 |
 | `parade.mp4` | 夏祭りの一日「巡回中｜地域のみんなと交流」の動画 |
