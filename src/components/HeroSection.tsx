@@ -116,7 +116,7 @@ export function HeroSection() {
         )}
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <CTAButton href="#video" variant="primary" size="lg" className="w-full sm:w-auto">
+          <CTAButton href="#timeline" variant="primary" size="lg" className="w-full sm:w-auto">
             夏祭りを見てみる
           </CTAButton>
           <CTAButton href="#join" variant="white" size="lg" className="w-full sm:w-auto">

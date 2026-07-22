@@ -2,7 +2,6 @@ import { festivalData } from './data/festivalData'
 import { Header } from './components/Header'
 import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection'
-import { VideoSection } from './components/VideoSection'
 import { FestivalTimeline } from './components/FestivalTimeline'
 import { RoleSection } from './components/RoleSection'
 import { MemorySection } from './components/MemorySection'
@@ -26,7 +25,6 @@ export default function App() {
       <main>
         <HeroSection />
         {sections.about && <AboutSection />}
-        {sections.video && <VideoSection />}
         {sections.timeline && <FestivalTimeline />}
         {sections.roles && <RoleSection />}
         {sections.memories && <MemorySection />}

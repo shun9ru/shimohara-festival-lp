@@ -28,7 +28,8 @@ export interface VideoItem {
   /** 動画読み込み前に表示するポスター画像のパス（任意） */
   poster?: string
   title: string
-  description: string
+  /** 動画の説明（任意） */
+  description?: string
   /** 動画が未設定のとき、プレースホルダーに表示するラベル */
   label: string
 }
@@ -62,20 +63,29 @@ export interface FeatureCard {
   description: string
 }
 
+/**
+ * タイムラインの各時間帯に表示する「写真または動画」1つ分の設定。
+ * ・写真: { src: '/images/...jpg', alt: '説明', label: '配置ラベル' }
+ * ・動画: { type: 'video', src: '/videos/...mp4', title: '動画のタイトル', label: '配置ラベル', poster?: '/images/...jpg' }
+ */
+export type TimelineMedia =
+  | (MediaImage & { type?: 'image' })
+  | (VideoItem & { type: 'video' })
+
 export interface ScheduleStep {
   /** タイムラインに表示する時間帯ラベル（例: '朝'） */
   time: string
   title: string
   description: string
   /**
-   * この時間帯の写真。複数枚を並べると、横スクロール（スワイプ）で
-   * 見られるようになります。1枚だけの場合は通常の画像として表示されます。
-   * 例: images: [
+   * この時間帯に表示する写真・動画。複数並べると、横スクロール（スワイプ）で
+   * 写真も動画も一緒に見られるようになります。1つだけの場合は通常表示です。
+   * 例: media: [
    *       { src: '/images/festival/schedule-morning.jpg', alt: '...', label: '...' },
-   *       { src: '/images/festival/schedule-morning-2.jpg', alt: '...', label: '...' },
+   *       { type: 'video', src: '/videos/festival/preparation.mp4', title: '...', label: '...' },
    *     ]
    */
-  images: MediaImage[]
+  media: TimelineMedia[]
 }
 
 export interface RoleCard {
@@ -171,8 +181,7 @@ export const festivalData = {
   // false にすると、そのセクションはページに表示されなくなります。
   sections: {
     about: true, // この夏祭りについて
-    video: true, // 動画で見る夏祭り
-    timeline: true, // 夏祭りの一日
+    timeline: true, // 夏祭りの一日（写真・動画つき）
     roles: true, // 子どもも大人も、みんなが主役
     memories: true, // 参加すると、こんな思い出ができます
     gallery: true, // フォトギャラリー
@@ -229,48 +238,6 @@ export const festivalData = {
     ] satisfies FeatureCard[],
   },
 
-  // ===== 動画で見る夏祭り =====
-  videoSection: {
-    title: 'まずは、夏祭りの雰囲気を動画でご覧ください',
-    description:
-      '朝の準備から山車の巡回、子どもたちの演奏、夏祭りを終えたあとの笑顔まで。\n下原地区の夏祭りの一日を、動画で感じてください。',
-    /** メインのダイジェスト動画 */
-    digest: {
-      src: '/videos/festival/festival-digest.mp4',
-      poster: '',
-      title: '下原地区の夏祭り ダイジェスト',
-      description: '夏祭りの一日をぎゅっとまとめたダイジェスト動画です。',
-      label: '過去の夏祭り動画を配置',
-    } satisfies VideoItem,
-    /** ダイジェストの下に並べる短い動画 */
-    clips: [
-      {
-        src: '/videos/festival/preparation.mp4',
-        title: 'みんなで準備',
-        description: '朝から集まって、山車の飾り付けや道具の準備をします。',
-        label: '当日の準備風景を配置',
-      },
-      {
-        src: '/videos/festival/children-performance.mp4',
-        title: '子どもたちの演奏',
-        description: '練習の成果を披露する、笛と太鼓の演奏です。',
-        label: '子どもたちの演奏動画を配置',
-      },
-      {
-        src: '/videos/festival/parade.mp4',
-        title: '山車の巡回',
-        description: '地域のみんなで、山車と一緒に地区内を歩きます。',
-        label: '山車の巡回動画を配置',
-      },
-      {
-        src: '/videos/festival/after-smiles.mp4',
-        title: '夏祭りを終えたあとの笑顔',
-        description: 'やりきった子どもたちと大人たちの、いい表情が並びます。',
-        label: '夏祭り後の笑顔の動画を配置',
-      },
-    ] satisfies VideoItem[],
-  },
-
   // ===== 夏祭りの一日（タイムライン） =====
   timeline: {
     title: '夏祭りの一日',
@@ -281,13 +248,20 @@ export const festivalData = {
         title: 'みんなで準備',
         description:
           '山車の飾り付けや、笛・太鼓、道具の確認を行います。\n初めての方も、周りの人と一緒に準備できます。',
-        // 写真を追加したいときは、この配列に { src, alt, label } を並べてください。
+        // 写真や動画を追加したいときは、この配列に並べてください。
         // 複数並べると、横スクロール（スワイプ）で見られるようになります。
-        images: [
+        // 動画は { type: 'video', src, title, label } の形で追加します。
+        media: [
           {
             src: '/images/festival/schedule-morning.jpg',
             alt: '朝、山車の飾り付けをする地域の人たち',
             label: '当日の準備風景を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/preparation.mp4',
+            title: 'みんなで準備',
+            label: '当日の準備風景の動画を配置',
           },
         ],
       },
@@ -296,7 +270,7 @@ export const festivalData = {
         title: '安全祈願',
         description:
           '出発の前に、夏祭りの無事と地域の安全を願って、みんなで祈願を行います。\n一年の感謝を込めて、静かに手を合わせるひとときです。',
-        images: [
+        media: [
           {
             src: '/images/festival/schedule-prayer.jpg',
             alt: '出発前に安全祈願をする参加者たち',
@@ -309,11 +283,17 @@ export const festivalData = {
         title: '山車の巡回スタート',
         description:
           '子どもたちが笛や太鼓を演奏し、地域のみんなで山車と一緒に歩きます。',
-        images: [
+        media: [
           {
             src: '/images/festival/schedule-start.jpg',
             alt: '笛や太鼓を演奏しながら出発する山車と子どもたち',
             label: '子どもたちの演奏写真を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/children-performance.mp4',
+            title: '子どもたちの演奏',
+            label: '子どもたちの演奏動画を配置',
           },
         ],
       },
@@ -322,11 +302,17 @@ export const festivalData = {
         title: '地域のみんなと交流',
         description:
           '途中で休憩を取りながら、地域の人たちとの交流を楽しみます。',
-        images: [
+        media: [
           {
             src: '/images/festival/schedule-parade.jpg',
             alt: '休憩しながら地域の人たちと交流する参加者',
             label: '山車の巡回写真を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/parade.mp4',
+            title: '山車の巡回',
+            label: '山車の巡回動画を配置',
           },
         ],
       },
@@ -335,11 +321,17 @@ export const festivalData = {
         title: 'みんなで片付け',
         description:
           '最後はみんなで協力して片付けます。\n一日を終えたあとの達成感も、夏祭りの大切な思い出です。',
-        images: [
+        media: [
           {
             src: '/images/festival/schedule-finish.jpg',
             alt: '夏祭りを終えて笑顔で集まる参加者たち',
             label: '参加者の集合写真を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/after-smiles.mp4',
+            title: '夏祭りを終えたあとの笑顔',
+            label: '夏祭り後の笑顔の動画を配置',
           },
         ],
       },

@@ -66,6 +66,7 @@ heroImage: {
 | `hero-main.jpg` | ファーストビューの背景（動画が無いとき） |
 | `about-festival.jpg` | 「この夏祭りについて」の大きな写真 |
 | `schedule-morning.jpg` | 夏祭りの一日「朝｜みんなで準備」 |
+| `schedule-prayer.jpg` | 夏祭りの一日「祈願｜安全祈願」 |
 | `schedule-start.jpg` | 夏祭りの一日「出発｜山車の巡回スタート」 |
 | `schedule-parade.jpg` | 夏祭りの一日「巡回中｜地域のみんなと交流」 |
 | `schedule-finish.jpg` | 夏祭りの一日「終了｜みんなで片付け」 |
@@ -73,6 +74,7 @@ heroImage: {
 | `next-event-poster.jpg` | 「次回の開催情報」に表示するポスター画像（縦長のチラシ推奨） |
 
 - ギャラリーの写真は `festivalData.ts` の `gallery.images` 配列に**追加・削除するだけ**で枚数を変えられます。
+- 夏祭りの一日（タイムライン）の各時間帯は、`festivalData.ts` の `timeline.steps` の `media` 配列に**写真や動画を複数並べられます**。2つ以上並べると、横スクロール（スワイプ）で見られるようになります。写真は `{ src, alt, label }`、動画は `{ type: 'video', src, title, label }` の形で追加します。
 - 画像が無い場所には「◯◯の写真を配置」というプレースホルダーが表示されるので、どこに何を置けばよいか画面上でも確認できます。
 
 ### イラストが表示される場所（写真がなくても成立する場所）
@@ -119,11 +121,10 @@ heroImage: {
 | ファイル名 | 表示される場所 |
 | --- | --- |
 | `hero-movie.mp4` | ファーストビューの背景（自動再生・音なし・ループ） |
-| `festival-digest.mp4` | 「動画で見る夏祭り」のメインダイジェスト |
-| `preparation.mp4` | 動画カード「みんなで準備」 |
-| `children-performance.mp4` | 動画カード「子どもたちの演奏」 |
-| `parade.mp4` | 動画カード「山車の巡回」 |
-| `after-smiles.mp4` | 動画カード「夏祭りを終えたあとの笑顔」 |
+| `preparation.mp4` | 夏祭りの一日「朝｜みんなで準備」の動画 |
+| `children-performance.mp4` | 夏祭りの一日「出発｜山車の巡回スタート」の動画 |
+| `parade.mp4` | 夏祭りの一日「巡回中｜地域のみんなと交流」の動画 |
+| `after-smiles.mp4` | 夏祭りの一日「終了｜みんなで片付け」の動画 |
 
 - スマートフォンの通信量に配慮し、背景動画は**短め（15〜30秒程度）・軽め（数MB〜10MB程度）**に圧縮するのがおすすめです。
 - ファーストビュー以外の動画は、画面に近づいてから読み込む遅延読み込みになっています。
@@ -210,8 +211,7 @@ links: {
 ```ts
 sections: {
   about: true,        // この夏祭りについて
-  video: true,        // 動画で見る夏祭り
-  timeline: true,     // 夏祭りの一日
+  timeline: true,     // 夏祭りの一日（写真・動画つき）
   roles: true,        // 子どもも大人も、みんなが主役
   memories: true,     // 参加すると、こんな思い出ができます
   gallery: true,      // フォトギャラリー
@@ -293,8 +293,8 @@ LP_aisaikai/
 │   │   ├── MobileMenu.tsx       # スマホ用メニュー
 │   │   ├── HeroSection.tsx      # ファーストビュー
 │   │   ├── AboutSection.tsx     # この夏祭りについて
-│   │   ├── VideoSection.tsx     # 動画で見る夏祭り
-│   │   ├── FestivalTimeline.tsx # 夏祭りの一日
+│   │   ├── FestivalTimeline.tsx # 夏祭りの一日（写真・動画の横スクロール）
+│   │   ├── MediaCarousel.tsx    # 写真・動画の横スクロール表示
 │   │   ├── RoleSection.tsx      # 子どもと大人の役割
 │   │   ├── MemorySection.tsx    # 参加してできる思い出
 │   │   ├── PhotoGallery.tsx     # フォトギャラリー
@@ -309,7 +309,6 @@ LP_aisaikai/
 │   │   ├── MediaPlaceholder.tsx # 画像・動画が無いときの表示
 │   │   ├── SmartImage.tsx       # 画像（自動でプレースホルダーに切替）
 │   │   ├── SmartVideo.tsx       # 動画（遅延読み込み対応）
-│   │   ├── VideoCard.tsx        # 短い動画カード
 │   │   ├── ImageModal.tsx       # ギャラリーの拡大表示
 │   │   ├── SectionHeading.tsx   # セクション見出し
 │   │   ├── CTAButton.tsx        # ボタン（URL未設定なら「準備中」表示）

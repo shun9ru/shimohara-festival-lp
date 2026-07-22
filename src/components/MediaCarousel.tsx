@@ -1,24 +1,33 @@
 import { useRef, useState } from 'react'
-import type { MediaImage } from '../data/festivalData'
+import type { TimelineMedia } from '../data/festivalData'
 import { SmartImage } from './SmartImage'
+import { SmartVideo } from './SmartVideo'
 
-interface ImageCarouselProps {
-  images: MediaImage[]
+interface MediaCarouselProps {
+  items: TimelineMedia[]
+}
+
+/** 1つ分の写真または動画を表示する */
+function Slide({ item }: { item: TimelineMedia }) {
+  if (item.type === 'video') {
+    return <SmartVideo video={item} />
+  }
+  return <SmartImage image={item} />
 }
 
 /**
- * 複数の写真を横並びにして、スワイプ（横スクロール）で見られるようにする。
- * 写真が1枚だけのときは、通常の画像として表示する。
+ * 写真・動画を横並びにして、スワイプ（横スクロール）で見られるようにする。
+ * 1つだけのときは、通常の写真／動画として表示する。
  */
-export function ImageCarousel({ images }: ImageCarouselProps) {
+export function MediaCarousel({ items }: MediaCarouselProps) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
 
-  // 写真が1枚だけ（または未設定）のときは、スクロールUIを使わずそのまま表示
-  if (images.length <= 1) {
+  // 写真・動画が1つだけ（または未設定）のときは、スクロールUIを使わずそのまま表示
+  if (items.length <= 1) {
     return (
       <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-md">
-        <SmartImage image={images[0]} />
+        <Slide item={items[0]} />
       </div>
     )
   }
@@ -30,7 +39,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     setActive(Math.round(el.scrollLeft / el.clientWidth))
   }
 
-  // ドットをタップしたら、その写真までスクロールする
+  // ドットをタップしたら、そのメディアまでスクロールする
   const scrollTo = (index: number) => {
     const el = scrollerRef.current
     if (!el) return
@@ -44,24 +53,24 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
         onScroll={handleScroll}
         className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto rounded-2xl shadow-md"
       >
-        {images.map((img, i) => (
+        {items.map((item, i) => (
           <div
-            key={`${img.src}-${i}`}
+            key={i}
             className="aspect-[4/3] w-full flex-none snap-center overflow-hidden"
           >
-            <SmartImage image={img} />
+            <Slide item={item} />
           </div>
         ))}
       </div>
 
       {/* いま何枚目かを示すドット（タップで移動できる） */}
       <div className="mt-3 flex items-center justify-center gap-2">
-        {images.map((img, i) => (
+        {items.map((_, i) => (
           <button
-            key={`dot-${img.src}-${i}`}
+            key={i}
             type="button"
             onClick={() => scrollTo(i)}
-            aria-label={`${i + 1}枚目の写真を表示`}
+            aria-label={`${i + 1}件目を表示`}
             aria-current={active === i}
             className={`h-2 rounded-full transition-all ${
               active === i ? 'bg-primary w-5' : 'bg-primary/30 w-2'

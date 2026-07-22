@@ -1,5 +1,5 @@
 import { festivalData } from '../data/festivalData'
-import { ImageCarousel } from './ImageCarousel'
+import { MediaCarousel } from './MediaCarousel'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -54,7 +54,7 @@ export function FestivalTimeline() {
                   delay={100}
                   className={`mt-4 pl-12 md:mt-0 md:pl-0 ${even ? 'md:order-2 md:pl-14' : 'md:order-1 md:pr-14'}`}
                 >
-                  <ImageCarousel images={step.images} />
+                  <MediaCarousel items={step.media} />
                 </Reveal>
               </li>
             )
