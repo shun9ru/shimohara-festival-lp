@@ -302,7 +302,13 @@ export const festivalData = {
           },
           {
             type: 'video',
-            src: '/videos/festival/children-performance.mp4',
+            src: '/videos/festival/children-performance-1.mp4',
+            title: '子どもたちの演奏',
+            label: '子どもたちの演奏動画を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/children-performance-2.mp4',
             title: '子どもたちの演奏',
             label: '子どもたちの演奏動画を配置',
           },
