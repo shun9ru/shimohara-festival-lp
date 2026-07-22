@@ -264,15 +264,15 @@ export const festivalData = {
         // 動画は { type: 'video', src, title, label } の形で追加します。
         media: [
           {
-            src: '/images/festival/schedule-morning.jpg',
-            alt: '朝、山車の飾り付けをする地域の人たち',
-            label: '当日の準備風景を配置',
-          },
-          {
             type: 'video',
             src: '/videos/festival/preparation.mp4',
             title: 'みんなで準備',
             label: '当日の準備風景の動画を配置',
+          },
+          {
+            src: '/images/festival/schedule-morning.jpg',
+            alt: '朝、山車の飾り付けをする地域の人たち',
+            label: '当日の準備風景を配置',
           },
         ],
       },
@@ -296,11 +296,6 @@ export const festivalData = {
           '子どもたちが笛や太鼓を演奏し、地域のみんなで山車と一緒に歩きます。',
         media: [
           {
-            src: '/images/festival/schedule-start.jpg',
-            alt: '笛や太鼓を演奏しながら出発する山車と子どもたち',
-            label: '子どもたちの演奏写真を配置',
-          },
-          {
             type: 'video',
             src: '/videos/festival/children-performance-1.mp4',
             title: '子どもたちの演奏',
@@ -312,6 +307,11 @@ export const festivalData = {
             title: '子どもたちの演奏',
             label: '子どもたちの演奏動画を配置',
           },
+          {
+            src: '/images/festival/schedule-start.jpg',
+            alt: '笛や太鼓を演奏しながら出発する山車と子どもたち',
+            label: '子どもたちの演奏写真を配置',
+          },
         ],
       },
       {
@@ -321,15 +321,15 @@ export const festivalData = {
           '途中で休憩を取りながら、地域の人たちとの交流を楽しみます。',
         media: [
           {
-            src: '/images/festival/schedule-parade.jpg',
-            alt: '休憩しながら地域の人たちと交流する参加者',
-            label: '山車の巡回写真を配置',
-          },
-          {
             type: 'video',
             src: '/videos/festival/parade.mp4',
             title: '山車の巡回',
             label: '山車の巡回動画を配置',
+          },
+          {
+            src: '/images/festival/schedule-parade.jpg',
+            alt: '休憩しながら地域の人たちと交流する参加者',
+            label: '山車の巡回写真を配置',
           },
         ],
       },
@@ -340,15 +340,15 @@ export const festivalData = {
           '最後はみんなで協力して片付けます。\n一日を終えたあとの達成感も、夏祭りの大切な思い出です。',
         media: [
           {
-            src: '/images/festival/schedule-finish.jpg',
-            alt: '夏祭りを終えて笑顔で集まる参加者たち',
-            label: '参加者の集合写真を配置',
-          },
-          {
             type: 'video',
             src: '/videos/festival/after-smiles.mp4',
             title: '夏祭りを終えたあとの笑顔',
             label: '夏祭り後の笑顔の動画を配置',
+          },
+          {
+            src: '/images/festival/schedule-finish.jpg',
+            alt: '夏祭りを終えて笑顔で集まる参加者たち',
+            label: '参加者の集合写真を配置',
           },
         ],
       },
