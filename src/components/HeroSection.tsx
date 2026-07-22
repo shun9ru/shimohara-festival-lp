@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CalendarDays, ChevronDown, Clock, MapPin, Video } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
+import { mediaUrl } from '../lib/mediaUrl'
 import { CTAButton } from './CTAButton'
 import { HeroFestivalIllustration } from './illustrations'
 
@@ -30,7 +31,7 @@ function HeroBackground() {
       {showVideo ? (
         <video
           className="h-full w-full object-cover"
-          src={heroVideo}
+          src={mediaUrl(heroVideo)}
           poster={heroImage.src || undefined}
           autoPlay
           muted

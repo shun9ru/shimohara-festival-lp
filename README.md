@@ -108,15 +108,30 @@ heroImage: {
 
 ## 3. 動画の差し替え方法
 
-### 手順（例：メイン動画）
+動画は**Cloudflare R2（外部ストレージ）で配信**します。ファイルサイズが大きくGit
+リポジトリに入れると重くなるため、`public/videos/**/*.mp4` は Git 管理から除外して
+います（`.gitignore` 済み）。
 
-1. 用意した動画のファイル名を `hero-movie.mp4` に変更する
-2. `public/videos/festival/` フォルダに置く
-3. これだけで表示されます
+### しくみ
+
+- 環境変数 `VITE_MEDIA_BASE_URL` に R2 の公開URLを設定すると、`/videos/...` のパスが
+  自動的に R2 のURLに差し替わります（`src/lib/mediaUrl.ts`）。
+- **未設定なら**これまで通りローカルの `public/videos/` を使うので、開発時はローカルに
+  動画を置いておけば表示されます。
+
+### 動画を追加・差し替える手順
+
+1. 動画を **mp4形式（H.264）** で用意する（1ファイル100MB以下を推奨）
+2. Cloudflare R2 のバケットに、`videos/festival/ファイル名.mp4` の構造でアップロード
+3. ローカル確認用に `public/videos/festival/` にも同じファイルを置く（Gitには入りません）
+4. 新しいファイル名を使う場合は `src/data/festivalData.ts` の `src` を更新する
+
+> R2 のバケット公開URL（例 `https://pub-xxxx.r2.dev`）を `.env` の
+> `VITE_MEDIA_BASE_URL` と、Vercel の環境変数に登録して再デプロイしてください。
 
 ### 用意する動画の一覧
 
-すべて `public/videos/festival/` に置きます。**mp4形式（H.264）**を推奨します。
+R2 の `videos/festival/` に置きます（ローカル確認用に `public/videos/festival/` にも）。
 
 | ファイル名 | 表示される場所 |
 | --- | --- |

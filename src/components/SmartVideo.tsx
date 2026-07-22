@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { VideoItem } from '../data/festivalData'
 import { useInView } from '../hooks/useInView'
+import { mediaUrl } from '../lib/mediaUrl'
 import { MediaPlaceholder } from './MediaPlaceholder'
 
 interface SmartVideoProps {
@@ -24,7 +25,7 @@ export function SmartVideo({ video, className = '' }: SmartVideoProps) {
         <MediaPlaceholder type="video" label={video.label} note={video.src || undefined} />
       ) : inView ? (
         <video
-          src={video.src}
+          src={mediaUrl(video.src)}
           controls
           preload="metadata"
           playsInline

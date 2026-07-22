@@ -4,3 +4,6 @@ dist
 *.local
 .DS_Store
 Thumbs.db
+
+# 動画は Git に入れず Cloudflare R2 で配信する（ローカルの実ファイルは残す）
+public/videos/**/*.mp4

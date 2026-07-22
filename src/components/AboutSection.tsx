@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { festivalData } from '../data/festivalData'
+import { mediaUrl } from '../lib/mediaUrl'
 import { iconMap } from './icons'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -22,7 +23,7 @@ export function AboutSection() {
           <div className="mx-auto aspect-video max-w-4xl overflow-hidden rounded-3xl bg-black/5 shadow-lg">
             {showVideo ? (
               <video
-                src={about.video.src}
+                src={mediaUrl(about.video.src)}
                 controls
                 preload="metadata"
                 playsInline
