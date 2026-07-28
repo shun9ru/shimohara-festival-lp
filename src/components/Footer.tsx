@@ -45,8 +45,9 @@ export function Footer() {
             <h2 className="font-bold text-white">夏祭り運営</h2>
             <ul className="mt-4 space-y-2.5">
               <li>{contact.organization}</li>
-              <li>電話：{contact.tel || '準備中'}</li>
-              <li className="break-all">メール：{contact.email || '準備中'}</li>
+              <li className="leading-relaxed text-white/60">
+                お問い合わせは、LINEオープンチャットで受け付けています。
+              </li>
             </ul>
           </div>
 

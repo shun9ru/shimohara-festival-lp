@@ -616,11 +616,15 @@ export const festivalData = {
           'お申込みはこれで完了です。当日の詳しい案内は、ご記入いただいた連絡先へお知らせします。',
       },
     ] satisfies ParticipationStep[],
-    /** フォームでの申込みが難しい方向けの案内 */
-    analog: {
-      title: 'フォームでの申込みが難しい方へ',
+    /** LINEオープンチャットでの問い合わせ案内 */
+    lineContact: {
+      title: 'お気軽にお問い合わせください',
       description:
-        'お電話や、回覧板・公民館に設置している申込み用紙でもお申込みいただけます。ご不明な点は、下記の問い合わせ先までお気軽にご連絡ください。',
+        'わからないことや気になることは、LINEのオープンチャットでお気軽にご質問ください。\n「参加してみたいけれど迷っている」という段階のご相談も歓迎です。地域の担当者がお答えします。',
+      /** オープンチャットの名前 */
+      chatName: '下原区お祭りオープンチャット',
+      /** ボタンの文字 */
+      buttonLabel: 'オープンチャットで質問する',
     },
   },
 
@@ -642,11 +646,6 @@ export const festivalData = {
         value: 'かすみがうら市観光協会／神立商工振興会',
       },
       { icon: 'share', label: '最新情報', value: '公式Instagramをご確認ください' },
-      {
-        icon: 'phone',
-        label: 'お問い合わせ',
-        value: '神立代表　入江　090-1409-9938\n逆西代表　今井　080-5053-2813',
-      },
     ] satisfies InfoItem[],
   },
 
@@ -661,11 +660,10 @@ export const festivalData = {
   // 空文字 '' のままにすると、ボタンに「準備中」と表示されます。
   links: {
     /** LINEオープンチャットの招待URL */
-    lineOpenChat: '',
+    lineOpenChat:
+      'https://line.me/ti/g2/mWu0dLz4hcc8mCxe47ngqMb-LK1dU8UVy02TTg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default',
     /** 参加申込みフォームのURL（Googleフォームなど） */
     applicationForm: 'https://forms.gle/BgMdXwSjWX3xbrCf9',
-    /** 問い合わせ先URL（フォームのURL または 'mailto:xxx@example.com'） */
-    contact: '',
     /** Googleマップ「埋め込み用」URL（README参照） */
     googleMapEmbed: '',
     /** Googleマップの共有リンク（「Googleマップで開く」ボタン用） */
@@ -683,12 +681,9 @@ export const festivalData = {
   },
 
   // ===== 問い合わせ先 =====
+  // 問い合わせ窓口は LINEオープンチャット（links.lineOpenChat）に一本化しています。
   contact: {
     organization: '下原地区夏祭り運営委員会',
-    /** 電話番号（例: '090-0000-0000'）。空文字なら「準備中」と表示 */
-    tel: '',
-    /** メールアドレス。空文字なら「準備中」と表示 */
-    email: '',
   },
 
   copyright: '© 2026 下原地区夏祭り運営委員会',

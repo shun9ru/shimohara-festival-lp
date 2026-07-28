@@ -1,11 +1,11 @@
-import { FileText, Phone } from 'lucide-react'
+import { FileText, MessageCircle } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { CTAButton } from './CTAButton'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
 export function ParticipationSection() {
-  const { participation, links, contact } = festivalData
+  const { participation, links } = festivalData
 
   return (
     <section id="join" className="bg-primary-soft scroll-mt-20 py-16 md:py-24">
@@ -43,36 +43,26 @@ export function ParticipationSection() {
               <FileText className="size-5" aria-hidden="true" />
               参加申込みフォームを開く
             </CTAButton>
-            <CTAButton href={links.contact} variant="outline" size="lg" className="w-full sm:w-auto">
-              問い合わせる
-            </CTAButton>
           </div>
         </Reveal>
 
-        {/* LINEを使わない方向け */}
+        {/* LINEオープンチャットでの問い合わせ */}
         <Reveal className="mt-10">
-          <div className="border-ink/10 mx-auto max-w-2xl rounded-2xl border bg-white p-6 md:p-7">
-            <h3 className="text-ink flex items-center gap-2 font-bold">
-              <Phone className="text-primary size-5" aria-hidden="true" />
-              {participation.analog.title}
+          <div className="border-ink/10 mx-auto max-w-2xl rounded-2xl border bg-white p-6 text-center md:p-7">
+            <h3 className="text-ink flex items-center justify-center gap-2 font-bold">
+              <MessageCircle className="text-line size-5" aria-hidden="true" />
+              {participation.lineContact.title}
             </h3>
-            <p className="text-ink-soft mt-3 text-sm leading-relaxed">
-              {participation.analog.description}
+            <p className="text-ink-soft mt-3 text-sm leading-relaxed whitespace-pre-line">
+              {participation.lineContact.description}
             </p>
-            <dl className="text-ink mt-4 space-y-1.5 text-sm">
-              <div className="flex gap-3">
-                <dt className="text-ink-soft w-20 shrink-0">電話</dt>
-                <dd className="font-medium">{contact.tel || '準備中'}</dd>
-              </div>
-              <div className="flex gap-3">
-                <dt className="text-ink-soft w-20 shrink-0">メール</dt>
-                <dd className="font-medium break-all">{contact.email || '準備中'}</dd>
-              </div>
-              <div className="flex gap-3">
-                <dt className="text-ink-soft w-20 shrink-0">担当</dt>
-                <dd className="font-medium">{contact.organization}</dd>
-              </div>
-            </dl>
+            <p className="text-ink-soft mt-4 text-xs">
+              オープンチャット「{participation.lineContact.chatName}」
+            </p>
+            <CTAButton href={links.lineOpenChat} variant="line" size="lg" className="mt-5 w-full sm:w-auto">
+              <MessageCircle className="size-5" aria-hidden="true" />
+              {participation.lineContact.buttonLabel}
+            </CTAButton>
           </div>
         </Reveal>
       </div>
