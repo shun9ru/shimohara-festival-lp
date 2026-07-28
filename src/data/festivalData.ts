@@ -340,6 +340,20 @@ export const festivalData = {
         ],
       },
       {
+        time: '共演',
+        title: '逆西地区との共演',
+        description:
+          '逆西地区の山車と合流し、たくさんの地域の人たちが集まります。\n何台もの山車が並び、笛や太鼓の音が重なり合う、一日でいちばん賑やかなひとときです。',
+        media: [
+          {
+            type: 'video',
+            src: '/videos/festival/joint-performance.mp4',
+            title: '逆西地区との共演',
+            label: '逆西地区との共演の動画を配置',
+          },
+        ],
+      },
+      {
         time: '終了',
         title: 'みんなで片付け',
         description:
