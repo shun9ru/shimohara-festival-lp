@@ -322,7 +322,13 @@ export const festivalData = {
         media: [
           {
             type: 'video',
-            src: '/videos/festival/parade.mp4',
+            src: '/videos/festival/parade-1.mp4',
+            title: '山車の巡回',
+            label: '山車の巡回動画を配置',
+          },
+          {
+            type: 'video',
+            src: '/videos/festival/parade-2.mp4',
             title: '山車の巡回',
             label: '山車の巡回動画を配置',
           },
@@ -442,46 +448,31 @@ export const festivalData = {
   // ===== フォトギャラリー =====
   gallery: {
     title: 'フォトギャラリー',
+    /** 写真が1枚以上あるときに見出しの下に表示する文 */
     description: '過去の夏祭りの様子をご紹介します。写真をタップすると拡大表示できます。',
-    // 写真はこの配列に追加・削除するだけで反映されます。
-    images: [
-      {
-        src: '/images/festival/gallery-01.jpg',
-        alt: '地区内を巡回する山車',
-        label: '山車の写真を配置',
-        caption: '地区内を巡回する山車',
-      },
-      {
-        src: '/images/festival/gallery-02.jpg',
-        alt: '太鼓を演奏する子どもたち',
-        label: '子どもたちの演奏写真を配置',
-        caption: '太鼓を演奏する子どもたち',
-      },
-      {
-        src: '/images/festival/gallery-03.jpg',
-        alt: '朝の準備風景',
-        label: '当日の準備風景を配置',
-        caption: '朝の準備風景',
-      },
-      {
-        src: '/images/festival/gallery-04.jpg',
-        alt: '笛を練習する子どもたち',
-        label: '練習風景の写真を配置',
-        caption: '本番に向けた練習の様子',
-      },
-      {
-        src: '/images/festival/gallery-05.jpg',
-        alt: '休憩中に交流する参加者たち',
-        label: '休憩・交流の写真を配置',
-        caption: '休憩中のひとこま',
-      },
-      {
-        src: '/images/festival/gallery-06.jpg',
-        alt: '夏祭りを終えた参加者の集合写真',
-        label: '参加者の集合写真を配置',
-        caption: '夏祭りを終えて、みんなで一枚',
-      },
-    ] satisfies MediaImage[],
+    /** 写真がまだ1枚も無いときに、上の description の代わりに表示する文 */
+    preparingDescription: '過去の夏祭りの写真を準備しています。公開まで少しお待ちください。',
+    /** 写真がまだ1枚も無いときに、ギャラリー枠に表示する見出し */
+    preparingLabel: '写真は準備中です',
+    /** 上の preparingLabel の下に小さく表示する補足文 */
+    preparingNote: '写真が揃いましたら、こちらで順次公開していきます。',
+    /**
+     * ここに写真を追加するだけでギャラリーが表示されます。
+     * 空の配列 [] のままなら「準備中」の案内が表示されます。
+     *
+     * 【写真を追加する手順】
+     * 1. 写真を public/images/festival/ に置く（例: gallery-01.jpg）
+     * 2. 下のコメントを参考に、この配列に項目を追加する
+     *
+     * 【書き方の例】
+     *   {
+     *     src: '/images/festival/gallery-01.jpg', // 置いた写真のパス
+     *     alt: '地区内を巡回する山車',            // 画像の説明（読み上げ・SEO用）
+     *     label: '山車の写真を配置',              // 読み込めなかったときの表示ラベル
+     *     caption: '地区内を巡回する山車',        // 拡大表示したときのキャプション
+     *   },
+     */
+    images: [] as MediaImage[],
   },
 
   // ===== 参加者の声 =====
