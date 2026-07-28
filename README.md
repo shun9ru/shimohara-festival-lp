@@ -154,6 +154,7 @@ R2 の `videos/festival/` に置きます（ローカル確認用に `public/vid
 | `hero-movie.mp4` | ファーストビューの背景（自動再生・音なし・ループ） |
 | `festival-digest.mp4` | 「この夏祭りについて」冒頭のダイジェスト動画（未配置の間は `about-festival.jpg` を表示） |
 | `preparation.mp4` | 夏祭りの一日「朝｜みんなで準備」の動画 |
+| `prayer.mp4` | 夏祭りの一日「祈願｜安全祈願」の動画 |
 | `children-performance-1.mp4` | 夏祭りの一日「出発｜山車の巡回スタート」の動画（1本目） |
 | `children-performance-2.mp4` | 夏祭りの一日「出発｜山車の巡回スタート」の動画（2本目） |
 | `parade-1.mp4` | 夏祭りの一日「巡回中｜地域のみんなと交流」の動画（1本目） |

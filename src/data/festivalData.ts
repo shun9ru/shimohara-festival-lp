@@ -283,6 +283,12 @@ export const festivalData = {
           '出発の前に、夏祭りの無事と地域の安全を願って、みんなで祈願を行います。\n一年の感謝を込めて、静かに手を合わせるひとときです。',
         media: [
           {
+            type: 'video',
+            src: '/videos/festival/prayer.mp4',
+            title: '安全祈願',
+            label: '安全祈願の動画を配置',
+          },
+          {
             src: '/images/festival/schedule-prayer.jpg',
             alt: '出発前に安全祈願をする参加者たち',
             label: '安全祈願の写真を配置',
