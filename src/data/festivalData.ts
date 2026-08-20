@@ -192,7 +192,7 @@ export const festivalData = {
     timeline: true, // 夏祭りの一日（写真・動画つき）
     roles: true, // 子どもも大人も、みんなが主役
     memories: true, // 参加すると、こんな思い出ができます
-    gallery: true, // フォトギャラリー
+    gallery: false, // フォトギャラリー（写真素材が揃ったら true に戻すと再表示されます）
     testimonials: true, // 参加者の声
     future: true, // 夏祭りを未来へつなぐために
     faq: true, // 初めて参加する方へ（FAQ）
@@ -205,7 +205,6 @@ export const festivalData = {
   media: {
     /** ファーストビューの背景動画。空文字ならメイン画像→プレースホルダーの順に表示 */
     heroVideo: '/videos/festival/hero-movie.mp4',
-    heroVideoLabel: 'メイン動画を配置',
     /** ファーストビューの背景画像（動画がない場合や動画読み込み前に表示） */
     heroImage: {
       src: '/images/festival/hero-main.jpg',
@@ -611,7 +610,7 @@ export const festivalData = {
   participation: {
     title: '参加方法',
     description:
-      '次回の夏祭りに参加してみたい方は、Googleフォームからお申込みください。\nスマートフォンから1〜2分で完了します。',
+      '次回の夏祭りに参加してみたい方は、Googleフォームからお申込みください。\nスマートフォンから約3分で完了します。',
     steps: [
       {
         title: '参加申込みフォームを開く',

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CalendarDays, ChevronDown, Clock, MapPin, Video } from 'lucide-react'
+import { CalendarDays, ChevronDown, ChevronRight, Clock, MapPin } from 'lucide-react'
 import { festivalData } from '../data/festivalData'
 import { mediaUrl } from '../lib/mediaUrl'
 import { CTAButton } from './CTAButton'
@@ -55,7 +55,7 @@ function HeroBackground() {
 }
 
 export function HeroSection() {
-  const { catchphrase, subCopy, heroBadge, nextEvent, media } = festivalData
+  const { catchphrase, subCopy, heroBadge, nextEvent } = festivalData
 
   return (
     <section id="hero" className="relative flex min-h-svh items-center justify-center overflow-hidden">
@@ -65,12 +65,6 @@ export function HeroSection() {
         className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/65"
         aria-hidden="true"
       />
-
-      {/* メイン動画・画像が未配置のときの案内チップ */}
-      <p className="absolute top-20 left-1/2 z-10 flex max-w-[92%] -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/40 px-4 py-1.5 text-[11px] whitespace-nowrap text-white/80 backdrop-blur">
-        <Video className="size-3.5 shrink-0" aria-hidden="true" />
-        <span className="truncate">メイン動画を配置：{media.heroVideo || '（未設定）'}</span>
-      </p>
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-32 text-center text-white">
         <p className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-bold tracking-widest backdrop-blur">
@@ -85,9 +79,12 @@ export function HeroSection() {
           {subCopy}
         </p>
 
-        {/* 次回の開催予定（scheduled が false のときはお知らせ文を表示） */}
+        {/* 次回の開催予定（タップすると「次回の開催情報」セクションへ移動します） */}
         {nextEvent.scheduled ? (
-          <div className="mt-8 inline-flex flex-col items-center gap-2.5 rounded-2xl border border-white/25 bg-white/10 px-6 py-4 backdrop-blur">
+          <a
+            href="#info"
+            className="mt-8 inline-flex flex-col items-center gap-2.5 rounded-2xl border border-white/25 bg-white/10 px-6 py-4 backdrop-blur transition hover:border-white/40 hover:bg-white/20"
+          >
             <span className="bg-primary rounded-full px-3.5 py-1 text-[11px] font-bold tracking-widest text-white">
               次回開催
             </span>
@@ -108,7 +105,11 @@ export function HeroSection() {
                 {nextEvent.place}
               </span>
             </div>
-          </div>
+            <span className="inline-flex items-center gap-0.5 text-xs font-bold text-white/90">
+              詳しい開催情報を見る
+              <ChevronRight className="size-3.5" aria-hidden="true" />
+            </span>
+          </a>
         ) : (
           <p className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm backdrop-blur">
             <CalendarDays className="size-4 shrink-0 text-white/80" aria-hidden="true" />
