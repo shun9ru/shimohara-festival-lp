@@ -30,10 +30,10 @@ export default function App() {
         {sections.memories && <MemorySection />}
         {sections.gallery && <PhotoGallery />}
         {sections.testimonials && <TestimonialSection />}
-        {sections.future && <FutureSection />}
-        {sections.faq && <FAQSection />}
-        {sections.participation && <ParticipationSection />}
         {sections.information && <EventInformation />}
+        {sections.participation && <ParticipationSection />}
+        {sections.faq && <FAQSection />}
+        {sections.future && <FutureSection />}
         {sections.finalCta && <FinalCTA />}
       </main>
       <Footer />
