@@ -140,6 +140,14 @@ export interface InfoItem {
   value: string
 }
 
+/** 当日のタイムスケジュール1行分 */
+export interface DayScheduleItem {
+  /** 時間帯（例: '13:00〜13:30'） */
+  time: string
+  /** その時間帯の内容 */
+  label: string
+}
+
 export const festivalData = {
   // ===== 基本情報 =====
   festivalName: '下原地区の夏祭り',
@@ -652,6 +660,35 @@ export const festivalData = {
       },
       { icon: 'share', label: '最新情報', value: '公式Instagramをご確認ください' },
     ] satisfies InfoItem[],
+
+    /** 当日のタイムスケジュール（予定） */
+    daySchedule: {
+      title: '当日のタイムスケジュール（予定）',
+      items: [
+        { time: '13:00〜13:30', label: '受付・下原区公民館に集合' },
+        { time: '13:30〜14:00', label: '当日の流れについての説明' },
+        { time: '14:00〜15:00', label: '準備をして、会場（神立駅前）へ出発（15:00ごろ到着予定）' },
+        { time: '15:00〜18:30', label: '神立駅前で山車の巡行（交代制のため、自由時間もあります）' },
+        { time: '18:30〜19:00', label: '公民館へ戻ります' },
+        { time: '19:00〜19:30', label: '後片付け' },
+        { time: '19:30', label: '解散' },
+      ] satisfies DayScheduleItem[],
+      note: '※途中からの参加・途中での解散もできます。その場合は、事前にご連絡ください。',
+    },
+
+    /** お囃子の練習日程 */
+    practice: {
+      title: 'お囃子の練習について',
+      description:
+        'お祭り当日に向けて、参加する子ども向けにお囃子（太鼓・笛・鐘）の練習を行います。',
+      items: [
+        { icon: 'calendar', label: '日程', value: '9月5日（土）から毎週土曜日' },
+        { icon: 'clock', label: '時間', value: '18:00〜19:00' },
+        { icon: 'mapPin', label: '場所', value: '下原区公民館' },
+        { icon: 'users', label: '対象', value: 'お祭りに参加する子ども' },
+      ] satisfies InfoItem[],
+      note: '参加は自由ですが、当日に向けて仲間と顔を合わせるよい機会になりますので、ぜひご参加ください。',
+    },
   },
 
   // ===== 最終CTA =====
