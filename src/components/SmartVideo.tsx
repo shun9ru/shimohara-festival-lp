@@ -7,6 +7,11 @@ import { MediaPlaceholder } from './MediaPlaceholder'
 interface SmartVideoProps {
   video: VideoItem
   className?: string
+  /**
+   * 読み込みに失敗したときに呼ばれます。
+   * これを渡すと、失敗時にプレースホルダーを出す代わりに親側で非表示にできます。
+   */
+  onUnavailable?: () => void
 }
 
 /**
@@ -15,7 +20,7 @@ interface SmartVideoProps {
  * ・ファイルが未設定/存在しない場合はプレースホルダーを表示
  * ・エラーを画面に出さない
  */
-export function SmartVideo({ video, className = '' }: SmartVideoProps) {
+export function SmartVideo({ video, className = '', onUnavailable }: SmartVideoProps) {
   const { ref, inView } = useInView<HTMLDivElement>({ rootMargin: '200px 0px', threshold: 0 })
   const [failed, setFailed] = useState(false)
 
@@ -30,7 +35,7 @@ export function SmartVideo({ video, className = '' }: SmartVideoProps) {
           preload="metadata"
           playsInline
           poster={video.poster || undefined}
-          onError={() => setFailed(true)}
+          onError={() => (onUnavailable ? onUnavailable() : setFailed(true))}
           className="h-full w-full bg-black/5 object-cover"
           aria-label={video.title}
         />

@@ -13,14 +13,26 @@ interface SmartImageProps {
    * ポスターなど全体を見せたい画像は 'contain' を指定してください。
    */
   fit?: 'cover' | 'contain'
+  /**
+   * 読み込みに失敗したときに呼ばれます。
+   * これを渡すと、失敗時にプレースホルダーを出す代わりに親側で非表示にできます。
+   */
+  onUnavailable?: () => void
 }
 
 /**
  * 画像を表示するコンポーネント。
  * パスが未設定、またはファイルが存在せず読み込みに失敗した場合は、
  * レイアウトを崩さずプレースホルダーを表示する。
+ * （onUnavailable を渡した場合は、プレースホルダーの代わりに親へ通知する）
  */
-export function SmartImage({ image, className = '', eager = false, fit = 'cover' }: SmartImageProps) {
+export function SmartImage({
+  image,
+  className = '',
+  eager = false,
+  fit = 'cover',
+  onUnavailable,
+}: SmartImageProps) {
   const [failed, setFailed] = useState(false)
 
   if (!image.src || failed) {
@@ -40,7 +52,7 @@ export function SmartImage({ image, className = '', eager = false, fit = 'cover'
       alt={image.alt}
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
-      onError={() => setFailed(true)}
+      onError={() => (onUnavailable ? onUnavailable() : setFailed(true))}
       className={`h-full w-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} ${className}`}
     />
   )
